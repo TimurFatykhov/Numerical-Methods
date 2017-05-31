@@ -1,12 +1,14 @@
 !define BLANK ""
-J:\NM\4\4.obj : J:\NM\4\4.for .AUTODEPEND
- @J:
- cd J:\NM\4
+C:\Users\USER\Desktop\NM\NM\4\4.obj : C:\Users\USER\Desktop\NM\NM\4\4.for .A&
+UTODEPEND
+ @C:
+ cd C:\Users\USER\Desktop\NM\NM\4
  wfc386 4.for -d2 -q -dep
 
-J:\NM\4\4.exe : J:\NM\4\4.obj .AUTODEPEND
- @J:
- cd J:\NM\4
+C:\Users\USER\Desktop\NM\NM\4\4.exe : C:\Users\USER\Desktop\NM\NM\4\4.obj .A&
+UTODEPEND
+ @C:
+ cd C:\Users\USER\Desktop\NM\NM\4
  @%write 4.lk1 FIL 4.obj
  @%append 4.lk1 
 !ifneq BLANK ""

@@ -1,10 +1,10 @@
       PROGRAM main
          IMPLICIT NONE
-         REAL nodes(50000000)
+         REAL*8 nodes(50000000)
          INTEGER numNodes
-         REAL integralSimpson
-         REAL integralGaus2
-         REAL a,b,h
+         REAL*8 integralSimpson
+         REAL*8 integralGaus2
+         REAL*8 a,b,h
          INTEGER i
          
          a= -5
@@ -13,14 +13,14 @@
          !h= (b - a)/2
          
          CALL createEvenGrid(a,b,h,nodes(1),numNodes)
-         write(*,*)integralSimpson(nodes,numNodes)
-         !write(*,*)integralGaus2(nodes,numNodes)
+         !write(*,*)integralSimpson(nodes,numNodes)
+         write(*,*)integralGaus2(nodes,numNodes)
          
          DO i = 0,17
             h = h/2
             CALL createEvenGrid(a,b,h,nodes(1),numNodes)
-            write(*,*)integralSimpson(nodes,numNodes)
-            !write(*,*)integralGaus2(nodes,numNodes)
+            !write(*,*)integralSimpson(nodes,numNodes)
+            write(*,*)integralGaus2(nodes,numNodes)
          END DO
          
          !CALL createEvenGrid(a,b,h,nodes(1),numNodes)
@@ -33,8 +33,8 @@
       END
     
       SUBROUTINE createEvenGrid(a,b,h, nodes,numNodes)
-        REAL nodes(*)
-        REAL a,b,h
+        REAL*8 nodes(*)
+        REAL*8 a,b,h
         INTEGER numNodes
         INTEGER i
         i = 1
@@ -52,9 +52,9 @@
       END
       
       
-      REAL FUNCTION fun(x)
+      REAL*8 FUNCTION fun(x)
         IMPLICIT NONE
-        REAL x
+        REAL*8 x
         
         !SIMPSON
         !fun = x**2
@@ -75,15 +75,14 @@
         
         !fun = x**7 + x**6
         !fun = cos(x)*x
-        
       END
       
       
       
       
-      REAL FUNCTION integralSimpson(nodes, numNodes)
+      REAL*8 FUNCTION integralSimpson(nodes, numNodes)
         IMPLICIT NONE
-        REAL nodes(*), fun, result
+        REAL*8 nodes(*), fun, result
         INTEGER numNodes,i
         
         result = 0
@@ -100,20 +99,20 @@
       
       
       
-      REAL FUNCTION integralGaus2(nodes,numNodes)
+      REAL*8 FUNCTION integralGaus2(nodes,numNodes)
         IMPLICIT none
-        REAL nodes(*)
+        REAL*8 nodes(*)
         INTEGER numNodes
         
-        REAL fun
-        REAL res
-        REAL sum
+        REAL*8 fun
+        REAL*8 res
+        REAL*8 sum
         
-        REAL x_j(2)
-        REAL q(2)
+        REAL*8 x_j(2)
+        REAL*8 q(2)
         
-        REAL x_k_j
-        REAL h_k
+        REAL*8 x_k_j
+        REAL*8 h_k
         
         INTEGER k, j
         
