@@ -1,0 +1,104 @@
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+    1282.5388184
+     276.3072510
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+      30.0000000
+      11.8103027
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+       0.1542515
+       0.7275393
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+     749.5239258
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+      26.3878002
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+       0.3105175
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+    3467.5507813
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+      29.8109798
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+      -0.0341437
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+triangle does not exist
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit
+triangle does not exist
+1)Enter new triangle
+2)Compute area of triangle
+3)Compute minimum angle
+4)Compute cosine minimum angle
+5)Exit

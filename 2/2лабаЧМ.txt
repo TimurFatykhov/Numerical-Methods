@@ -1,0 +1,45 @@
+      program main
+        common/p/pi
+        real pi,minX,maxX,stepX,minY,maxY,stepY
+        pi = 3.1415927
+        open(1,file='input.txt')
+        open(2,file='output.txt')
+        read(1,*)minX,maxX,stepX,minY,maxY,stepY
+        nX = (maxX-minX)/stepX
+        nY = (maxY-minY)/stepY
+        
+        if(minX+nX*stepX.EQ.maxX)nX = nX - 1
+        if(minY+nY*stepY.EQ.maxY)nY = nY - 1
+        
+        if(nX*(maxX-minX).LT.0)then
+            print*,'incorrect data'
+            read*
+            return
+        end if
+        
+        write(2,*)minY*0,(minY+stepY*i,i=0,nY),maxY
+        
+        !minY = minX*pi/180
+        !maxY = minY*pi/180
+        !x = minX
+        !y = minY
+        
+        k = 0
+        dowhile(k.LE.nX)!*180/pi.LT.maxX)
+            actX = minx+k*stepX
+            write(2,*)actX,(sec(actX,minY,stepY,i),i=0,nY),
+     &      sec(actX,maxY,0,0)
+            write(*,*)k,actX
+            k = k + 1
+        end do
+        write(2,*)maxX,(sec(maxX,minY,stepY,i),i=0,nY),
+     &  sec(maxX,maxY,0,0)
+        read*
+      end
+      
+      function sec(x,y,step,i)
+        common/p/pi
+        !if(mod(x+y,2*pi).NE.0)
+        sec='inf'
+        !sec = x+y+step*i
+      end

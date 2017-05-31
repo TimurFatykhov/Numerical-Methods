@@ -1,0 +1,153 @@
+      PROGRAM main
+         IMPLICIT NONE
+         REAL nodes(160000000)
+         INTEGER numNodes
+         REAL integral_simpson
+         REAL integral_gaus_2
+         REAL a,b,h
+         INTEGER i
+         
+         a= -5
+         b= 5
+         h= b - a
+         !h= (b - a)/2
+         
+         CALL create_even_grid(a,b,h,nodes(1),numNodes)
+         
+         write(*,*)integral_simpson(nodes,numNodes)
+         
+         read*
+                        
+      END
+    
+      SUBROUTINE create_even_grid(a,b,h, nodes,numNodes)
+        REAL nodes(*)
+        REAL a,b,h
+        INTEGER numNodes
+        INTEGER i
+        i = 1
+        nodes(1) = a
+        ! a + i * h = nodes(i) + h
+1       IF( a + i * h .LT. b) THEN
+            nodes(i + 1) = a + i * h
+            i = i + 1
+            GOTO 1
+        ELSE
+            i = i + 1
+        END IF
+        nodes(i) = b
+        numNodes = i       
+      END
+      
+      
+      REAL FUNCTION fun(x)
+        IMPLICIT none
+        REAL x
+        !fun = sin(cos(x*x)) + cos(x*x*x)*sin(x)!log(x+1)*log(x+1)!(x**10) + 17*(x**2)
+        !fun = sin(1/x/x)
+        !fun = x**7
+        
+        fun = x**2
+        
+        !fun = 10
+        !fun = 2*x + 4
+        !fun = 4*x*x + 7*x + 3
+         !fun = x*x*x - 5*x + 10
+        !fun = x**4 + 20*(x**3) +3000
+        !fun = -1 * (x**5)+ x**4 + 20*(x**3)+50 
+        !fun = x**7 +x**6
+        !fun = -7*(x**6) - 1*(x**5) +  x**4 + 20*(x**3)  +100
+        !fun = x**7 + x**6
+        !fun =  -1 * (x**8) + x**7 + x**6
+        !fun =  -1 * (x**9) + (x**8) + x**7 + x**6
+        !fun = cos(x)*x
+        !fun = x**11 - x**10 - x**9 + x**8
+      END
+      
+      REAL FUNCTION integral_simpson(nodes, numNodes)
+        IMPLICIT NONE
+        REAL nodes(*), fun, result
+        INTEGER numNodes,i
+        
+        result = 0
+        
+        DO 99 i=1,numNodes - 1
+            result = result + nodes(i+1)/3*
+     +      ( fun(nodes(i))+4*(fun(( nodes(i+1)+nodes(i))/2))+
+     +      fun(nodes(i+1))) 
+99      CONTINUE
+        
+        integral_simpson=result
+      END
+      
+      
+      
+      REAL FUNCTION integral_trapec(nodes, numNodes)
+        IMPLICIT none
+        REAL nodes(*)
+        INTEGER numNodes
+        REAL fun
+        REAL res
+        INTEGER i
+        ! h(i) = nodes(i+1) - nodes(i)
+        !h(i) + h(i+1) = nodes(i+2)-nodes(i)
+        ! N = numNodes - 1
+        ! i = 1... N-1 = 1...numNodes - 2
+        ! f(x(i)) = f(nodes(i + 1) )
+        res = 0
+        res=res+fun(nodes(1))*(nodes(2)-nodes(1))
+
+        res=res+fun(nodes(numNodes))*
+     >  (nodes(numNodes)-nodes(numNodes-1))
+        DO i=1,numNodes-2
+            
+            res=res+fun(nodes(i+1))*(nodes(i+2)-nodes(i))
+        END DO
+        integral_trapec = res/2 
+             
+      END
+      
+      REAL FUNCTION integral_gaus_2(nodes,numNodes)
+        IMPLICIT none
+        REAL nodes(*)
+        INTEGER numNodes
+        
+        REAL fun
+        REAL res
+        REAL buf
+        
+        REAL x_j(2)
+        REAL q(2)
+        
+        REAL x_k_j
+        REAL h_k
+        
+        INTEGER k, j
+        
+        
+        
+        x_j(1) = -1./SQRT(3.)
+        x_j(2) = -1 * x_j(1)
+        
+        
+        q(1) = 1
+        q(2) = 1
+               
+        !x(k,j) = (nodes(k) + nodes(k + 1))/2. + x_j(j) * (nodes(k+1) - nodes(k)) /2.      
+        !x(i) = nodes(i + 1)
+        !h(i) = nodes(i+1) - nodes(i)
+        ! N = numNodes - 1
+        res = 0
+        DO k = 1,numNodes - 1
+            buf = 0
+            h_k = nodes(k + 1) - nodes(k)                    
+            DO j = 1,2
+                x_k_j =(nodes(k)+nodes(k+1) + x_j(j)*h_k)/2
+                buf = buf + q(j) * fun(x_k_j)
+            END DO
+            res = res + buf * h_k
+        END DO
+        integral_gaus_2 = res/2
+               
+      END
+      

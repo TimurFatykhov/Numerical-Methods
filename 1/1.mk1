@@ -1,0 +1,20 @@
+!define BLANK ""
+C:\Users\USER\Desktop\NM\1.obj : C:\Users\USER\Desktop\NM\1.for .AUTODEPEND
+ @C:
+ cd C:\Users\USER\Desktop\NM
+ wfc386 1.for -d2 -q -dep
+
+C:\Users\USER\Desktop\NM\1.exe : C:\Users\USER\Desktop\NM\1.obj .AUTODEPEND
+ @C:
+ cd C:\Users\USER\Desktop\NM
+ @%write 1.lk1 FIL 1.obj
+ @%append 1.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b 1.imp 
+ @%append 1.lk1 LIBR 1.imp
+!endif
+!ifneq BLANK ""
+ @%append 1.lk1 
+!endif
+ *wlink name 1 d all sys nt op m op maxe=25 op q op symf @1.lk1
+
